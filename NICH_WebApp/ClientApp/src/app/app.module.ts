@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+import { DxButtonModule } from 'devextreme-angular/ui/button';
+import { DxSelectBoxModule } from 'devextreme-angular';
+
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -29,7 +32,9 @@ import { NirEditComponent } from './Components/nir-edit/nir-edit.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'nir-edit', component: NirEditComponent },
-    ])
+    ]),
+    DxButtonModule,
+    DxSelectBoxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

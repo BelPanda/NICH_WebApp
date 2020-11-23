@@ -7,9 +7,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NirEditComponent implements OnInit {
 
+   NumSRW
+ FullNameSRW
+ B_DateTime
+  E_DateTime
+   IdType
+ IdDirection
+  IdOrganization
+ SSheff
+  BaseExec
+  Phone
+  № приказа - OrdNum
+  Дата приказа - OrdDate
+  № регистрации - NomReg
+  Дополнительное финансирование - OtherFin
+  BaseSRW
+  IDType2
+  iTypeSub
+  
+
+
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  helloWorld() {
+    alert('Hello world!');
+}
 }
