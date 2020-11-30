@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nir-edit.component.css']
 })
 export class NirEditComponent implements OnInit {
-
+/**
    NumSRW
  FullNameSRW
  B_DateTime
@@ -24,7 +24,7 @@ export class NirEditComponent implements OnInit {
   BaseSRW
   IDType2
   iTypeSub
-  
+  **/
 
 
 
