@@ -36,7 +36,15 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/nir-edit']">Редактирование НИР</a>
           </li>
+          <li class="nav-item dropdown ">
+            <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Списки</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item text-dark" [routerLink]="['/all-srw']">Все НИР</a>
+              <a class="dropdown-item text-dark">Неподписанные ШР</a>
+            </div>
+          </li>
         </ul>
+
         <ul class=" navbar-nav">
           <li class="nav-item d-inline-flex">
             <a class="nav-link text-dark" href="#">
@@ -49,7 +57,7 @@
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" data-toggle="dropdown"
+            <a class="nav-link dropdown-toggle text-dark" id="navbarDropdown" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
               Вход / Регистрация
             </a>
