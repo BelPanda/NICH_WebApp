@@ -1,8 +1,28 @@
-<dx-data-grid id="dataGrid"
-[dataSource]="SRWs"
-[keyExpr]="IdSWR"
+<br>
+<div class="container">
+	
+	<dx-data-grid id="dataGrid"
+					[dataSource]="SRWArrayStore"
+					[keyExpr]="Id"
 
-[showBorders]="true"
-[allowColumnResizing]="true"
->
-</dx-data-grid>
+					[showBorders]="true"
+					[allowColumnResizing]="true"
+					
+					[rowAlternationEnabled]="true"
+					>
+		
+			<!--
+				<dxi-column dataField="NumSRW" caption="№ НИР" dataType="string"></dxi-column>
+	<dxi-column
+		dataField="B_DateTime">
+	</dxi-column>	
+	<dxi-column
+		dataField="E_DateTime">
+	</dxi-column>
+	<dxi-column
+		dataField="Type">
+	 -->
+
+
+	</dx-data-grid>
+</div>
