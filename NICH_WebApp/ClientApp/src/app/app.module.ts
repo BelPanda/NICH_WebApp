@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HttpParams,HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { DxButtonModule } from 'devextreme-angular/ui/button';
-import { DxSelectBoxModule } from 'devextreme-angular';
-import { DxDataGridModule } from 'devextreme-angular';
+import { DxSelectBoxModule, DxDataGridModule, DxCheckBoxModule} from 'devextreme-angular';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -29,6 +28,8 @@ import { AllSrwComponent } from './Components/all-srw/all-srw.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    HttpParams,
+    HttpClient ,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -39,7 +40,8 @@ import { AllSrwComponent } from './Components/all-srw/all-srw.component';
     ]),
     DxButtonModule,
     DxSelectBoxModule,
-    DxDataGridModule
+    DxDataGridModule,
+    DxCheckBoxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

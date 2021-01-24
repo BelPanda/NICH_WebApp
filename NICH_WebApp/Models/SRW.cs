@@ -35,7 +35,7 @@ namespace NICH_WebApp.Models
 
         //To View all employees details
 
-        public IEnumerable<SRW> GetAllSRW()
+        public IEnumerable<SRW> GetAllSRW(bool isAll = false)
         {
 
             try
@@ -46,6 +46,11 @@ namespace NICH_WebApp.Models
                     SqlCommand cmd = new SqlCommand("[dbo].[n_GetAllSRWWithExec]", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     con.Open();
+
+                    SqlParameter isAllParameter = new SqlParameter("all", SqlDbType.Bit);
+                    isAllParameter.Value = isAll;
+                    cmd.Parameters.Add(isAllParameter);
+
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {

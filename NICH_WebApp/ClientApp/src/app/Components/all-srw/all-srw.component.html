@@ -1,28 +1,65 @@
-<br>
-<div class="container">
+<div class="container-fluid">
+	
+	<br>
+	<h1><strong>Список всех научно-исследовательских работ</strong></h1>
+	<br>
+
+	<dx-check-box
+		[(value)]="isAllChB"
+		[width]="100"
+		text="Все НИР"
+		(onValueChanged)="handleValueChange($event)">
+	</dx-check-box>
+
+	<dx-button
+		text="Обновить"
+		(onClick)="updateClicked($event)">
+	</dx-button>	
+	<br>
 	
 	<dx-data-grid id="dataGrid"
-					[dataSource]="SRWArrayStore"
-					[keyExpr]="Id"
+		[(dataSource)]="SRWArrayStore"
+		[keyExpr]="IdSWR"
 
-					[showBorders]="true"
-					[allowColumnResizing]="true"
-					
-					[rowAlternationEnabled]="true"
-					>
-		
-			<!--
-				<dxi-column dataField="NumSRW" caption="№ НИР" dataType="string"></dxi-column>
-	<dxi-column
-		dataField="B_DateTime">
-	</dxi-column>	
-	<dxi-column
-		dataField="E_DateTime">
-	</dxi-column>
-	<dxi-column
-		dataField="Type">
-	 -->
+		[showBorders]="true"
+		[showColumnLines]="true"
+		[showRowLines]="true"
+		[rowAlternationEnabled]="true"
 
+		[allowColumnResizing]="true"
+		[columnResizingMode]="widget"
+		[columnMinWidth]="200"
+		[focusedRowEnabled]=true
+		[allowColumnReordering]="true"
+		(onValueChanged)="handleValueChange($event)"
+	>
+	
+	<dxo-scrolling mode="infinite"></dxo-scrolling>
+					<dxo-editing 
+					mode="popup"
+					[allowUpdating]="true">
+					<dxo-popup
+						title=""
+						[showTitle]="true"
+						[width]="700"
+						[height]="525"
+						[position]="{ my: 'center', at: 'center', of: window }">
+					</dxo-popup>
+					</dxo-editing>
+	<dxi-column dataField="NumSRW" caption="№ НИР" dataType="string" columnMinWidth=200 ></dxi-column>
+	
+	<dxi-column dataField="B_DateTime" caption="Дата начала" dataType="date"></dxi-column>
 
+	<dxi-column dataField="E_DateTime" caption="Дата окончания" dataType="date"></dxi-column>
+
+	<dxi-column dataField="Type" caption="Тип НИР" dataType="string"></dxi-column>
+	
+	<dxi-column dataField="FullNameSRW" caption="Наименование" dataType="string"></dxi-column>
+	
+	<dxi-column dataField="NameDirection" caption="Направление финансирования" dataType="string"></dxi-column>
+	
+	<dxi-column dataField="ShortName" caption="Заказчик" dataType="string"></dxi-column>
+	
+	<dxi-column dataField="ExecutorName" caption="Исполнитель" dataType="string"></dxi-column>
 	</dx-data-grid>
 </div>

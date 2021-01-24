@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace NICH_WebApp
 {
@@ -25,6 +27,10 @@ namespace NICH_WebApp
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = null; 
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

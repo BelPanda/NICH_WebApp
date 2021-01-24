@@ -29,5 +29,11 @@ namespace NICH_WebApp.Controllers
         {
             return SRWDataAccessLayer.GetAllSRW();
         }
+
+        public IEnumerable<SRW> GET(bool isAll)
+        {
+            return SRWDataAccessLayer.GetAllSRW();
+        }
+
     }
 }
