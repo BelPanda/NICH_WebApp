@@ -1,4 +1,5 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
+import { HttpParams} from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 
 import ArrayStore from 'devextreme/data/array_store';
@@ -9,7 +10,9 @@ import Button from "devextreme/ui/button";
   templateUrl: './all-srw.component.html',
   styleUrls: ['./all-srw.component.css']
 })
+
 export class AllSrwComponent implements OnInit{
+
   public SRWArrayStore: ArrayStore;
   public SRWs: SRW[] = [];
   private BaseUrl: string;
@@ -17,25 +20,27 @@ export class AllSrwComponent implements OnInit{
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
    this.BaseUrl = baseUrl;
   }
-
+//, {params: new HttpParams().set("isAll", this.isAllChB as unknown as string)}
   ngOnInit(): void {
-    this.http.get<SRW[]>(this.BaseUrl + 'SRW', {params: new HttpParams().set("isAll", this.isAllChB as unknown as string)}).subscribe(result => {
-      this.SRWs = result;
-      this.SRWArrayStore = new ArrayStore({
-        key: "IdSWR",
-        data: this.SRWs
-      })
-    }, error => console.error(error));
-    
+    this.GetSrws(this.isAllChB);
   }
 
   handleValueChange (e) {
-    
-    console.log("CheckBox");
-  }
+// this.isAllChB
+    this.GetSrws(e.value);
+}
   updateClicked(e)
   {
-    console.log("Button");
+    this.GetSrws(this.isAllChB);
+  }
+
+  GetSrws (isAll: boolean):void {
+    this.http.get<SRW[]>(this.BaseUrl + 'SRW',{params: new HttpParams().set("isAll", isAll as unknown as string)}).subscribe(result => {
+      this.SRWs = result; 
+      this.SRWArrayStore = new ArrayStore({
+        key: "IdSWR",
+        data: this.SRWs})
+      },error => console.error(error));
   }
 }
 

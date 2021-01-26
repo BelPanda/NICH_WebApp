@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	
 	<br>
-	<h1><strong>Список всех научно-исследовательских работ</strong></h1>
+	<h1><strong>Список научно-исследовательских работ</strong></h1>
 	<br>
 
 	<dx-check-box
@@ -15,20 +15,18 @@
 		text="Обновить"
 		(onClick)="updateClicked($event)">
 	</dx-button>	
-	<br>
+	<br><br>
 	
 	<dx-data-grid id="dataGrid"
 		[(dataSource)]="SRWArrayStore"
-		[keyExpr]="IdSWR"
 
 		[showBorders]="true"
 		[showColumnLines]="true"
 		[showRowLines]="true"
 		[rowAlternationEnabled]="true"
+	
 
 		[allowColumnResizing]="true"
-		[columnResizingMode]="widget"
-		[columnMinWidth]="200"
 		[focusedRowEnabled]=true
 		[allowColumnReordering]="true"
 		(onValueChanged)="handleValueChange($event)"
@@ -46,20 +44,21 @@
 						[position]="{ my: 'center', at: 'center', of: window }">
 					</dxo-popup>
 					</dxo-editing>
-	<dxi-column dataField="NumSRW" caption="№ НИР" dataType="string" columnMinWidth=200 ></dxi-column>
-	
-	<dxi-column dataField="B_DateTime" caption="Дата начала" dataType="date"></dxi-column>
 
-	<dxi-column dataField="E_DateTime" caption="Дата окончания" dataType="date"></dxi-column>
+	<dxi-column dataField="NumSRW" caption="№ НИР" dataType="string" width="6%" ></dxi-column>
+	
+	<dxi-column dataField="B_DateTime" caption="Дата начала" dataType="date" width="6%"></dxi-column>
 
-	<dxi-column dataField="Type" caption="Тип НИР" dataType="string"></dxi-column>
+	<dxi-column dataField="E_DateTime" caption="Дата окончания" dataType="date" width="6%"></dxi-column>
+
+	<dxi-column dataField="Type" caption="Тип НИР" dataType="string" width="16%"></dxi-column>
 	
-	<dxi-column dataField="FullNameSRW" caption="Наименование" dataType="string"></dxi-column>
+	<dxi-column dataField="FullNameSRW" caption="Наименование" dataType="string" width="20%"></dxi-column>
 	
-	<dxi-column dataField="NameDirection" caption="Направление финансирования" dataType="string"></dxi-column>
+	<dxi-column dataField="NameDirection" caption="Направление финансирования" dataType="string" width="14%"></dxi-column>
 	
-	<dxi-column dataField="ShortName" caption="Заказчик" dataType="string"></dxi-column>
+	<dxi-column dataField="ShortName" caption="Заказчик" dataType="string" width="16%"></dxi-column>
 	
-	<dxi-column dataField="ExecutorName" caption="Исполнитель" dataType="string"></dxi-column>
+	<dxi-column dataField="ExecutorName" caption="Исполнитель" dataType="string" width="16%"></dxi-column>
 	</dx-data-grid>
 </div>

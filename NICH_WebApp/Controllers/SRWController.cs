@@ -24,15 +24,15 @@ namespace NICH_WebApp.Controllers
         }
 
 
-        [HttpGet]
-        public IEnumerable<SRW> Index()
-        {
-            return SRWDataAccessLayer.GetAllSRW();
-        }
+        //[HttpGet]
+        //public IEnumerable<SRW> Index()
+        //{
+        //    return SRWDataAccessLayer.GetAllSRW();
+        //}
 
         public IEnumerable<SRW> GET(bool isAll)
         {
-            return SRWDataAccessLayer.GetAllSRW();
+            return SRWDataAccessLayer.GetAllSRW(isAll);
         }
 
     }
