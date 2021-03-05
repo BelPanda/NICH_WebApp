@@ -1,0 +1,69 @@
+<div class="container-fluid">
+	<br>
+	<h1><strong>Штатное расписание НИР №{{NumSrw}}</strong></h1>
+	<br>
+	<dx-box 
+	direction="row"
+	width="100%"
+	align="start"
+	crossAlign="stretch"
+	>
+	>
+		<dxi-item [ratio]="1">
+			<div class="dx-field">
+				<div class="dx-field-label">ФОТ по смете:</div>
+				<div class="dx-field-value-static">{{SelectedSRWStaffS.FOTSm | number: '1.2-2' : 'ru'}}</div>
+			</div>
+		</dxi-item>
+		<dxi-item [ratio]="1">
+			<div class="dx-field">
+				<div class="dx-field-label">Фактические затраты (шт.):</div>
+				<div class="dx-field-value-static">{{SelectedSRWStaffS.Fact1 | number: '1.2-2' : 'ru'}}</div>
+			</div>
+		</dxi-item>
+		<dxi-item [ratio]="1">
+			<div class="dx-field">
+				<div class="dx-field-label">Фактические затраты (совм.):</div>
+				<div class="dx-field-value-static">{{SelectedSRWStaffS.Fact2 | number: '1.2-2' : 'ru'}}</div>
+			</div>
+		</dxi-item>
+		<dxi-item [ratio]="1">
+			<div class="dx-field">
+				<div class="dx-field-label">Подписан:</div>
+				<div class="dx-field-value">
+					<dx-check-box class="float-left"
+					[value]="SelectedSRWStaffS.State"
+					readOnly = "true">
+				</dx-check-box>
+				</div>
+			</div>
+		</dxi-item>
+	</dx-box>
+	<dx-select-box
+				#selectBoxRef
+				width="7rem"
+				[(dataSource)]="data"
+				valueExpr="IdSnir"
+				displayExpr="DateS"
+				itemTemplate="item"
+				fieldTemplate="inputField"
+				[value]="SelectedSRWStaffS.IdSnir"
+				(onValueChanged)="handleValueChange($event)">
+				>
+				<div *dxTemplate="let data of 'item'">
+					{{data.DateS | date:"dd.MM.yyyy"}}
+				</div>
+				<div *dxTemplate="let data of 'inputField'">
+					<dx-text-box value = '{{data && data.DateS | date:"dd.MM.yyyy"}}' >
+					</dx-text-box>
+				</div>
+	</dx-select-box>
+	<div class="dx-field">
+		<div class="dx-field-label">ИТОГО:</div>
+		<div class="dx-field-value-static">{{SelectedSRWStaffS.ISumma | number: '1.2-2' : 'ru'}}</div>
+	</div>
+	<div class="dx-field">
+		<div class="dx-field-label">Компенсация:</div>
+		<div class="dx-field-value-static">{{SelectedSRWStaffS.Distr | number: '1.2-2' : 'ru'}}</div>
+	</div>
+</div>                                                                                        

@@ -1,0 +1,13 @@
+.box-item {
+	padding-top: 34px;
+	font-size: 16px;
+}
+.dx-field-label {
+	text-align: right;
+}
+.dx-field-value {
+	float: none;
+}
+dx-check-box {
+	float: none;
+}

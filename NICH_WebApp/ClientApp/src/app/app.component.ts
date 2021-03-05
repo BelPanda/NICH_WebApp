@@ -20,8 +20,8 @@ export class AppComponent {
   constructor() {
     Globalize.load(supplemental, ruCldrData);
     Globalize.loadMessages(ruMessages);
-    Globalize.locale(navigator.language);
+    Globalize.locale('ru');
     loadMessages(ruMessages);
-    locale(navigator.language);
+   
 }
 }

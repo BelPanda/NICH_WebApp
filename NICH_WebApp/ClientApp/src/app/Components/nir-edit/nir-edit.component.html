@@ -1,98 +1,139 @@
-
-<input type="button" onclick="alert('Клик!')" value="Кнопка">
-<form>
+<div class="container">
   <br>
-  <br>
-  <br>
-    <div class="form-row">
-      <div class="form-group col-md-3">
+	<h1><strong>Добавление научно-исследовательской работы</strong></h1>
+	<br>
+<form (ngSubmit)="saveSRW(SRW)" #formSRW="ngForm" novalidate>
+    <div class="row">
+      <div class="form-group col-4">
         <label for="inputNIR">№ НИР</label>
-        <input type="text" class="form-control" id="inputNIR">
+        <dx-text-box id="inputNIR" placeholder="№ НИР" [(ngModel)]="SRW.NumSRW" name ="NumSRW"></dx-text-box>
       </div>
-      <div class="form-group col-md-9">
+      <div class="form-group col-4">
         <label for="textareaNameNir">Наименование НИР</label>
-        <textarea class="form-control " id="textareaNameNir" placeholder="Наименование НИР" required></textarea>
+        <dx-text-area id="textareaNameNir" placeholder="Наименование НИР" [(ngModel)]="SRW.FullNameSRW" name ="FullNameSRW" ></dx-text-area>
       </div>
     </div>
-    <div class="form-row">
-    <div class="form-group col-2">
+    <div class="row">
+    <div class="form-group col-4">
       <label for="inputDateIn">Дата начала</label>
-      <input type="date" class="form-control" id="inputDateIn">
+      <dx-date-box class="form-control" id="inputDateIn"type="date" placeholder="01/01/2021"
+      [showClearButton]="true"
+      [useMaskBehavior]="true"
+      [(value)]="SRW.B_DateTime"></dx-date-box>
     </div>
-    <div class="form-group col-2">
+    <div class="form-group col-4">
       <label for="inputDateOut">Дата окончания</label>
-      <input type="date" class="form-control" id="inputDateOut">
+      <dx-date-box class="form-control" id="inputDateOut"type="date" placeholder="01/01/2021"
+      [showClearButton]="true"
+      [useMaskBehavior]="true"
+      [(value)]="SRW.E_DateTime"></dx-date-box>
     </div>
   </div>
-  <div class="dx-fieldset">
-    <div class="dx-fieldset-header">Тип НИР</div>
-    <div class="dx-field">
-        <div class="dx-field-label">Тип 1</div>
-        <div class="dx-field-value">
-        <dx-select-box
-        [items]="simpleProducts"
+  <div class="row">
+    <div class="form-group col-4">
+      <label for="Type">Тип НИР</label>
+      <dx-select-box 
+        class="form-control" 
+        id="Type"
         placeholder="Выберите тип"
-        [showClearButton]="true">
+        [showClearButton]="true"
+        [dataSource]="Classifs"
+        displayExpr="Name"
+        valueExpr="IdType"
+        [(value)]="SRW.IdType"
+        >
+    </dx-select-box>
+    </div>
+    <div class="form-group col-4">
+      <label for="organization">Заказчик</label>
+      <dx-select-box 
+        class="form-control" 
+        id="organization"
+        placeholder="Выберите pаказчика"
+        [showClearButton]="true"
+        [dataSource]="Organizations"
+        displayExpr="FullName"
+        valueExpr="IdOrganization"
+        searchMode= contains
+        searchExpr=FullName
+        searchTimeout=200
+        minSearchLength=0
+        [searchEnabled]="true"
+        [(value)]="SRW.IdOrganization">
       </dx-select-box>
-        </div>
-        </div>
-      </div>
-    <div class="form-group">
-      <label for="inputAddress2">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputCity">City</label>
-        <input type="text" class="form-control" id="inputCity">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputState">State</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="inputZip">Zip</label>
-        <input type="text" class="form-control" id="inputZip">
+  </div>
+  <div class="row">
+    <div class="form-group col-4">
+      <label for="finance">Направление финансирования</label>
+      <dx-select-box
+        class="form-control"
+        id="finance"
+        placeholder="Выберите направление финансирования"
+        [showClearButton]="true"
+        [dataSource]="Finances"
+        displayExpr="NameDirection"
+        valueExpr="IdDirection"
+        searchMode=contains
+        searchExpr=NameDirection
+        searchTimeout=200
+        minSearchLength=0
+        [searchEnabled]="true"
+        [(value)]="SRW.IdDirection">
+      </dx-select-box>
+    </div>
+  </div>
+    <div class="row">
+      <div class="form-group col-4">
+        <label for="otherFin">Дополнительное финансирование</label>
+        <dx-check-box id="otherFin"
+        class="check-box"
+        [(value)]="SRW.OtherFin">
+        </dx-check-box>
       </div>
     </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-          Check me out
-        </label>
+    <div class="row">
+      <div class="form-group col-4">
+        <label for="ssheff">Научный руководитель</label>
+        <dx-text-box class="form-control" id="ssheff"  [(ngModel)]="SRW.SSheff" name ="SSheff"></dx-text-box>
+      </div>
+      <div class="form-group col-4">
+        <label for="baseExec">Ответственный исполнитель</label>
+        <dx-text-box class="form-control" id="baseExec" [(ngModel)]="SRW.BaseExec" name ="BaseExec"></dx-text-box>
       </div>
     </div>
-    <div class="form-row">
-            <div class="form-group col-md-3">
-    <dx-button stylingMode="contained" text="Contained" type="default" text="Сохранить" (onClick)="helloWorld()">
-    </dx-button>
-    </div></div>
-    <div class="form-row">
-      <div class="form-group col-md-3">
-         <dx-select-box
-    [dataSource]="dataSource"
-    valueExpr="ID"
-    displayExpr="Name"
-    [searchEnabled]="true"
-    (onValueChanged)="onValueChanged($event)"
-    [grouped]="true">
-            </dx-select-box>
-          </div>  </div>
-          <div class="form-row">
-            <div class="form-group col-md-3">
-          <div class="dx-fieldset">
-            <div class="dx-field">
-                <div class="dx-field-label">Data grouped in the DataSource</div>
-                <div class="dx-field-value">
-                    <dx-select-box [dataSource]="fromUngroupedData"
-                        valueExpr="ID"
-                        [grouped]="true"
-                        displayExpr="Name"></dx-select-box>
-                </div>
-              </div></div></div></div>
-
-  </form>
+  <div class="row">
+    <div class="form-group col-4">
+      <label for="phone">Телефон</label>
+      <dx-text-box class="form-control" id="phone"
+      mask="+375 (00) 000-0000"
+      [(ngModel)]="SRW.Phone" name ="Phone"></dx-text-box>
+    </div>
+    <div class="form-group col-4">
+      <label for="nomReg">№ регистрации</label>
+      <dx-text-box class="form-control" id="nomReg" [(ngModel)]="SRW.NomReg" name ="NomReg"></dx-text-box>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-4">
+      <label for="OrdNum">№ приказа </label>
+      <dx-text-box class="form-control" id="OrdNum" [(ngModel)]="SRW.OrdNum" name ="OrdNum"></dx-text-box>
+    </div>
+    <div class="form-group col-4">
+      <label for="OrdDate">Дата приказа</label>
+      <dx-date-box class="form-control"id="OrdDate"
+      type="date" placeholder="01/01/2021"
+      [showClearButton]="true"
+      [useMaskBehavior]="true"
+      [(value)]="SRW.OrdDate"></dx-date-box>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+        <dx-button type="Default" [useSubmitBehavior]="true"
+         stylingMode="contained" text="Сохранить">
+        </dx-button>
+    </div>
+  </div>
+  </form> 
+</div>
